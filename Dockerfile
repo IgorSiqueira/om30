@@ -8,12 +8,13 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    libpq-dev
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd sockets
 
 RUN usermod -u 1000 www-data
 
